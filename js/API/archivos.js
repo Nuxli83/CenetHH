@@ -13,7 +13,7 @@ function subirFoto(foto){
 
 		var ft = new FileTransfer();
 		ft.upload(foto, "http://www.igitsoft.com/pgtest.php", function(r){
-			navigator.notification.confirm("Registro Satifactorio\nRespuesta: "+r.responseCode,function(btn){
+			navigator.notification.confirm("Registro Satifactorio\nRespuesta: "+r.responseCode+'\nNombre del Dispositivo:'+Dis()['Nombre'],function(btn){
 				switch(btn){
 					case 1:
 						navigator.notification.beep(2);
@@ -24,6 +24,7 @@ function subirFoto(foto){
 				}
 				window.location.href="#page";
 				//Confirmar Registro Localmente
+				CrearUsuario(dis()['nombre'],dis()['id']);
 			},'Gracias','Beep,Vibrar,Cancelar');
 		}, function(err){
 			alert('Error: '+err.code);
