@@ -1,18 +1,18 @@
 //eventos
 $(function(){
 	document.addEventListener("deviceready", function(){
-		if (!EstaRegistrado())
-		{
+		if(!estaRegistrado())
 			window.location.href="#registro";
-		}
-
-		$('#regEnv').click(function(){
+		$('#regEnv').tap(function(){
 			var nom = $('#regNom').val();
 			var mail = $('#regEma').val();
 			var tel = $('#regTel').val();
 			var foto = $('#regFoto').attr('foto');
 			
 			if(nom != '' && mail != '' && tel != '' && foto != '' && foto != undefined){
+				$('.loader').show();
+				$('.title div').text('enviando datos');
+				$(this).hide();
 				enviarDatos(nom,mail,tel,foto);
 			}else{
 				navigator.notification.alert('Todos los campos son requeridos',null,'Error','Aceptar');
@@ -20,8 +20,41 @@ $(function(){
 		});
 		
 		//Tomar Foto
-		$('#regFoto').click(function(){
+		$('#regFoto').tap(function(){
 			tomarFoto();
+		});
+		
+		//Acciones de nueva reserva
+		$('#nr1 ul:eq(0) li').tap(function(){
+			if($(this).index()>0){
+				$('#nr1 ul:eq(0) li').css('background','');
+				$(this).css('background','yellow');
+				$('#nr1').attr('th',$(this).index());
+			}
+		});
+		$('#nrSig').tap(function(){
+			if($('#nr1').attr('th') != indefined && $('#nr1').attr('th') != '')
+			window.location.href = '#nr2';
+						});
+			$('#resEnv').tap(function(){
+				var pr = $('#resPer').val();
+				var ha = $('#resHab').val();
+				var di = $('#resDia').val();
+				var th = $('#nr1').attr('th');
+				
+				//preguntamos si tiene una conexion a internet
+				
+				if(estaConectado())
+				//sincronizamos datos con el servidor
+				
+				else
+				
+				//Guardamos datos localmente
+				crearReservas(th,pr,ha,di);
+				
+				
+				
+
 		});
 	}, false);
 });
