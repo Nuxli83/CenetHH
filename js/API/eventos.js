@@ -26,6 +26,7 @@ $(function(){
 		
 		//Acciones de nueva reserva
 		$('#nr1 ul:eq(0) li').tap(function(){
+			alert('nada')
 			if($(this).index()>0){
 				$('#nr1 ul:eq(0) li').css('background','');
 				$(this).css('background','yellow');
