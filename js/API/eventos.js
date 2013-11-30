@@ -46,7 +46,7 @@ $(function(){
 				
 				if(estaConectado())
 				//sincronizamos datos con el servidor
-				
+				enviarReservas(th,pr,ha,di)
 				else
 				
 				//Guardamos datos localmente

@@ -23,23 +23,23 @@ function accesoBD()
 
 function crearReservas(th,pr,ha,di)
 {
-		function populateDB(tx) {
+		accesoBD().transaction(function populateDB(tx) {
     tx.executeSql('CREATE TABLE IF NOT EXISTS reservas (id unique, th,pr,ha,di)');
     tx.executeSql('INSERT INTO reservas (th,pr,ha,di) VALUES ( "'+th+'","'+pr+'","'+ha+'","'+di+'")');
-
-}
+		
+},
 
 function errorCB(err) {
     alert("Error processing SQL: "+err.code);
-}
+},
 
 
 
 function successCB() {
     navigator.notification.alert("Esperando a conexión para sincronizar",null,"Reserva Guardada","De acuerdo");
-}
+})
 
 	
 	
-}
+};
 
