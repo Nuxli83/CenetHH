@@ -33,7 +33,7 @@ $(function(){
 			}
 		});
 		$('#nrSig').tap(function(){
-			if($('#nr1').attr('th') != indefined && $('#nr1').attr('th') != '')
+			if($('#nr1').attr('th') != Undefined && $('#nr1').attr('th') != '')
 			window.location.href = '#nr2';
 						});
 			$('#resEnv').tap(function(){
